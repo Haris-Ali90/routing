@@ -592,19 +592,19 @@ for($j=0;$j<count($counts);$j++) {
     echo "<tr>";
     echo "<td>" . $i . "</td>";
     echo "<td>R-" .$counts[$j]->route_id . "</td>";
-    echo "<td>" . $counts[$j]->zone . "</td>";
+    echo "<td></td>";
 
 
-    if($counts[$j]->zone!=null)
-    {
-        $cart_id=JoeyRoute::getCartnoOfRoute($counts[$j]->route_id);
-   
-        echo "<td>" .chr($cart_id['zone_cart_no']).chr($cart_id['route_cart_no']).chr($cart_id['order_range'])."</td>";
-    }
-    else
-    {
-        echo "<td></td>";
-    }
+//    if($counts[$j]->zone!=null)
+//    {
+//        $cart_id=JoeyRoute::getCartnoOfRoute($counts[$j]->route_id);
+//
+//        echo "<td>" .chr($cart_id['zone_cart_no']).chr($cart_id['route_cart_no']).chr($cart_id['order_range'])."</td>";
+//    }
+//    else
+//    {
+//        echo "<td></td>";
+//    }
 
         $counter[] = $counts[$j]->joey_id;
     $joeys_un = array_unique($counter);

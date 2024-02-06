@@ -997,7 +997,7 @@ class RoutificController extends BackendController {
         // 'joey_routes.total_distance']);
      
         $countQry = "SELECT route_id,joey_routes.joey_id,joey_routes.`date`,
-        CONCAT(zones_routing.title,'(',joey_routes.zone,')') AS zone,
+        #CONCAT(zones_routing.title,'(',joey_routes.zone,')') AS zone,
         COUNT(joey_route_locations.id) AS counts,
         SUM(CASE WHEN sprint__sprints.status_id in(17,113,114,116,117,118,132,138,139,144,104,105,106,107,108,109,110,111,155,131,135,136) THEN 0 ELSE 1 END) AS d_counts,
         SUM(joey_route_locations.distance) AS distance,
@@ -1009,13 +1009,13 @@ class RoutificController extends BackendController {
         JOIN sprint__sprints ON(sprint_id=sprint__sprints.id) 
         JOIN joey_routes ON(route_id=joey_routes.id) 
         JOIN locations ON(location_id=locations.id)
-        LEFT JOIN  zones_routing ON (zones_routing.id=joey_routes.zone AND zones_routing.`deleted_at` IS NULL)
+        #LEFT JOIN  zones_routing ON (zones_routing.id=joey_routes.zone AND zones_routing.`deleted_at` IS NULL)
         -- JOIN slots_postal_code ON(slots_postal_code.postal_code= SUBSTRING(locations.`postal_code`,1,3))
         -- JOIN zones_routing ON(zone_id=zones_routing.id)
         #WHERE creator_id IN(477518,477542,477171,477255,477254,477283,477284,477286,477287,477288,477289,477307,477308,477309,477310,477311,477312,477313,
         #477314,477292,477294,477315,477317,477316,477295,477302,477303,477304,477305,477306,477296,477290,477297,477298,477299,477300,
         #477320,477301,477318,477328,476294,477334,477335,477336,477337,477338,477339,477559,477625,477587,477621,477627,477635,477633,477661) 
-        AND hub=17
+        AND hub=1
         AND joey_routes.date LIKE '".$date."%' 
         AND sprint__tasks.`deleted_at` IS NULL
         AND sprint__sprints.status_id != 36
